@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrate Moments</title>
+    <link rel="stylesheet" href="celebrate-moments.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .photo-gallery {
+            padding: 50px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .gallery-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+            color: #333;
+        }
+        
+        .gallery-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 20px 0;
+            gap: 20px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .gallery-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .gallery-item {
+            flex: 0 0 300px;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .donate-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+        
+        .donate-button:hover {
+            background-color: #45a049;
+        }
+        
+        .impact-counter {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, #1a1f35 0%, #0f1525 100%);
+            margin: 20px 0;
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .counter-number {
+            font-size: 3.5em;
+            color: #ffd700;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .impact-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, #1a1f35 0%, #0f1525 100%);
+            margin: 20px 0;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .stat-item p {
+            color: white;
+            font-size: 1.1em;
+            margin: 0;
+        }
+        
+        .impact-counter h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .impact-counter p {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+        }
+        
+        .close {
+            float: right;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        
+        .donation-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .form-group input, .form-group select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .submit-donation {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="celebrate-moments-section-container">
+        <div class="container-fluid p-0 mb-5">
+            <div class="row g-0">
+                <div class="col-12">
+                    <div class="logo-container">
+                        <img src="https://res.cloudinary.com/dftao6jzx/image/upload/v1737279644/hopebox_bobsfi.png" class="logo" />
+                    </div>
+                </div> 
+                <div class="col-12">
+                    <div class="top-section-container">
+                        <div class="top-section-text-container">
+                            <h1 class="top-section-title">SPREAD LOVE, CREATE IMPACT</h1>
+                            <p class="top-section-subtitle">turn your happiness into hope for others</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="impact-counter">
+            <h3>Total Impact Created</h3>
+            <div class="counter-number">₹<span id="totalDonations">1,28,750</span></div>
+            <p>Join us in making a difference!</p>
+        </div>
+        
+        <div class="impact-stats">
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <p>Lives Impacted</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100+</div>
+                <p>Events Celebrated</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <p>Communities Served</p>
+            </div>
+        </div>
+        
+        <div class="animation-container">
+            <div class="card-container d-flex flex-row ">
+                <img src="https://res.cloudinary.com/dczkhqagk/image/upload/v1739121183/cae96e0619b645739ece94192a8d9199_nsmwsj.webp" 
+                     alt="Animated Image" class="image1" height="500px" width="350px">
+                <div class="text-container1">
+                    <p class="head1">Weddings</p>
+                    <p class="animation-card-description">
+                        Your wedding is a beautiful celebration of love, commitment, and happiness. As you embark on this new journey together, 
+                        why not extend the joy beyond your special day? By donating to a cause close to your heart, you can make your wedding 
+                        even more meaningful and spread happiness to those in need.
+                    </p>
+                    <button class="donate-button" onclick="openDonationModal('Wedding')">Donate Now</button>
+                </div>
+            </div>
+            
+            <div class="card-container d-flex flex-row ">
+                <div class="text-container2">
+                    <p class="head2">Birthday</p>
+                    <p class="animation-card-description">
+                        Birthdays are a time for joy, gratitude, and celebration. This year, make your special day even more meaningful by 
+                        giving back and spreading happiness to those in need. Instead of just receiving gifts, why not share your blessings 
+                        and make a difference in the lives of others?
+                    </p>
+                    <button class="donate-button" onclick="openDonationModal('Birthday')">Donate Now</button>
+                </div>
+                <img src="https://res.cloudinary.com/dczkhqagk/image/upload/v1739121896/46cd9d54a242493292e7db8dc64bced8_svo4mm.webp" 
+                     alt="Animated Image" class="image2" height="500px" width="350px">
+            </div>
+            
+            <div class="card-container d-flex flex-row ">
+                <img src="https://res.cloudinary.com/dczkhqagk/image/upload/v1739122591/18c6fa64335f1d2339a93222b50cee35_yfnflw.jpg" 
+                     alt="Animated Image" class="image1" height="500px" width="350px">
+                <div class="text-container1">
+                    <p class="head1">Festivals</p>
+                    <p class="animation-card-description">
+                        Festivals are a time of joy, togetherness, and gratitude. As we celebrate with family and friends, let's take a 
+                        moment to share our happiness with those in need. By giving back, we can make our festivities even more meaningful 
+                        and bring light into the lives of others.
+                    </p>
+                    <button class="donate-button" onclick="openDonationModal('Festival')">Donate Now</button>
+                </div>
+            </div>
+            
+            <div class="card-container d-flex flex-row ">
+                <div class="text-container2">
+                    <p class="head2">Milestones</p>
+                    <p class="animation-card-description">
+                        Achieving a milestone—whether it's a career achievement, graduation, anniversary, or personal success—is a moment of 
+                        pride and joy. What better way to celebrate than by giving back and making a difference in the lives of others? By sharing 
+                        your happiness through acts of kindness, your success becomes even more meaningful.
+                    </p>
+                    <button class="donate-button" onclick="openDonationModal('Milestone')">Donate Now</button>
+                </div>
+                <img src="https://res.cloudinary.com/dczkhqagk/image/upload/v1739126488/15dfab8252a54a83b307bd706449b7d8_arbuqm.webp" 
+                     alt="Animated Image" class="image2" height="500px" width="350px">
+            </div>
+        </div>
+        <div class="photo-gallery">
+            <h2 class="gallery-title">Moments of Impact</h2>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="data:image/jpeg;base64,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" alt="Donation Impact">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGf5ZbGXyIl1On_y3lFHA4gPvpP2aOpXP5EiNhsXqHYt6EbMBi3g5UPZYt0deUC1S6Uzo&usqp=CAU" alt="Charity Event">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://blog.vancity.com/wp-content/uploads/2016/12/GiveHands-iStock-Blog-1280x620.jpg" alt="Community Support">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://akpsi.org/wp-content/uploads/2021/08/AdobeStock_112023896-scaled.jpeg" alt="Making a Difference">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXQY2z7brluYy3KdskdtgGnMhdlsSVGp1bGNtEQshbePfEe_NhUvqjJAAQ9spI4jEFoi0&usqp=CAU" alt="Helping Hands">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.vmcdn.ca/f/files/powellriverpeak/images/organizations/3009_giving_tuesday_getty_images.jpg" alt="Community Impact">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Donation Modal -->
+        <div id="donationModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeDonationModal()">&times;</span>
+                <h2>Make a Donation</h2>
+                <form class="donation-form" onsubmit="handleDonation(event)">
+                    <div class="form-group">
+                        <label for="occasion">Occasion</label>
+                        <input type="text" id="occasion" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount (₹)</label>
+                        <input type="number" id="amount" required min="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cause">Select Cause</label>
+                        <select id="cause" required>
+                            <option value="">Choose a cause</option>
+                            <option value="education">Education</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="poverty">Poverty Relief</option>
+                            <option value="environment">Environment</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-donation">Complete Donation</button>
+                </form>
+            </div>
+        </div>
+        
+        <script>
+            // JavaScript for scroll-triggered animation
+            const containers = document.querySelectorAll('.card-container');
+    
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            }, {
+                threshold: 0.3
+            });
+    
+            containers.forEach(container => {
+                observer.observe(container);
+            });
+            
+            // Donation Modal Functions
+            function openDonationModal(occasion) {
+                document.getElementById('occasion').value = occasion;
+                document.getElementById('donationModal').style.display = 'block';
+            }
+            
+            function closeDonationModal() {
+                document.getElementById('donationModal').style.display = 'none';
+            }
+            
+            // Close modal when clicking outside
+            window.onclick = function(event) {
+                const modal = document.getElementById('donationModal');
+                if (event.target == modal) {
+                    closeDonationModal();
+                }
+            }
+            
+            // Handle donation submission
+            function handleDonation(event) {
+                event.preventDefault();
+                
+                const amount = document.getElementById('amount').value;
+                const currentTotal = parseInt(document.getElementById('totalDonations').textContent);
+                const newTotal = currentTotal + parseInt(amount);
+                
+                // Update the counter
+                document.getElementById('totalDonations').textContent = newTotal;
+                
+                // Show success message
+                alert('Thank you for your donation! Your contribution will make a difference.');
+                
+                // Close the modal
+                closeDonationModal();
+                
+                // Reset the form
+                event.target.reset();
+            }
+        </script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>

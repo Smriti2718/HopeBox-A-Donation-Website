@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Bazaar - HopeBox</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="ngo-bazaar.css">
+
+</head>
+<body>
+    <div class="bazaar-container">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light navbar-bg fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="https://res.cloudinary.com/dftao6jzx/image/upload/v1737279644/hopebox_bobsfi.png" class="logo" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto">
+                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="volunteer.html">Volunteer</a>
+                        <a class="nav-link active" href="ngo-bazaar.html">NGO Bazaar</a>
+                        <a class="nav-link" href="about.html">About Us</a>
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#wishlistModal">
+                            <i class="far fa-heart"></i>
+                            <span class="wishlist-count">0</span>
+                        </a>
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="container d-flex flex-column justify-content-center">
+                <h1 class="mt-5">NGO Bazaar</h1>
+                <p>Discover unique items and support meaningful causes</p>
+                <div class="search-container d-flex align-items-center">
+                    <input type="text" class="search-input" placeholder="Search for products..." id="searchInput">
+                    <button class="btn btn-primary ms-2" style="border-radius: 20px; padding: 10px 15px;" id="searchBtn">
+                        Search <i class="fas fa-search ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Categories Section -->
+        <div class="categories-section">
+            <div class="container">
+                <h2>Shop by Category</h2>
+                <div class="filter-container">
+                    <div class="category-filters">
+                        <button class="category-btn active" data-category="all">All Items</button>
+                        <button class="category-btn" data-category="handmade">Handmade</button>
+                        <button class="category-btn" data-category="art">Art</button>
+                        <button class="category-btn" data-category="clothing">Clothing</button>
+                        <button class="category-btn" data-category="accessories">Accessories</button>
+                        <button class="category-btn" data-category="home">Home Decor</button>
+                    </div>
+                    <div class="active-filters mt-3">
+                        <span class="active-filters-label">Active Filters:</span>
+                        <div class="active-filters-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-section" id="products-section">
+            <div class="container">
+                <div class="row" id="products-grid">
+                    <!-- Product Card 1 -->
+                    <div class="col-md-4 col-lg-3 mb-4" data-category="handmade">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://res.cloudinary.com/dczkhqagk/image/upload/v1743349604/7efd7686bb535b40dfce557b405cfea0_uesuia.jpg" alt="Handmade Toy">
+                                <div class="product-badge">Best Seller</div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Handmade Wooden Toy</h3>
+                                <p class="price">₹299 <span class="original-price">₹399</span></p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="rating-count">(42)</span>
+                                </div>
+                                <p class="description">Beautifully crafted wooden toy made by local artisans. Supports education for underprivileged children.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="buy-btn">Add to Cart</button>
+                                    <button class="btn btn-outline-secondary btn-sm wishlist-btn">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="col-md-4 col-lg-3 mb-4" data-category="art">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://res.cloudinary.com/dczkhqagk/image/upload/v1743349707/f1b170764a7c5bb7236de45b061492c0_hdttrn.jpg" alt="Art Piece">
+                            </div>
+                            <div class="product-info">
+                                <h3>Traditional Art Piece</h3>
+                                <p class="price">₹1,499</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="rating-count">(18)</span>
+                                </div>
+                                <p class="description">Authentic traditional art piece supporting local artists. Helps preserve cultural heritage.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="buy-btn">Add to Cart</button>
+                                    <button class="btn btn-outline-secondary btn-sm wishlist-btn">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 -->
+                    <div class="col-md-4 col-lg-3 mb-4" data-category="clothing">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://i.pinimg.com/736x/9b/d1/47/9bd1470b501c7181a870b63e2d5d9b85.jpg" alt="Eco-friendly Clothing">
+                                <div class="product-badge">Eco-Friendly</div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Eco-friendly T-shirt</h3>
+                                <p class="price">₹499</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-count">(56)</span>
+                                </div>
+                                <p class="description">Sustainable clothing made from organic materials. Supports environmental conservation.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="buy-btn">Add to Cart</button>
+                                    <button class="btn btn-outline-secondary btn-sm wishlist-btn">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4 -->
+                    <div class="col-md-4 col-lg-3 mb-4" data-category="accessories">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://i.pinimg.com/736x/2b/1e/52/2b1e523bc69b8d6de43d9baa90e5e3c8.jpg" alt="Handmade Accessory">
+                                <div class="product-badge">New</div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Handmade Jewelry</h3>
+                                <p class="price">₹799</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="rating-count">(27)</span>
+                                </div>
+                                <p class="description">Unique jewelry pieces crafted by women artisans. Empowers women entrepreneurs.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="buy-btn">Add to Cart</button>
+                                    <button class="btn btn-outline-secondary btn-sm wishlist-btn">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 5 -->
+                    <div class="col-md-4 col-lg-3 mb-4" data-category="home">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://i.pinimg.com/736x/9f/8c/82/9f8c82563765dcd34ed5f4c4271d071b.jpg" alt="Home Decor">
+                            </div>
+                            <div class="product-info">
+                                <h3>Bamboo Home Decor</h3>
+                                <p class="price">₹1,199</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="rating-count">(33)</span>
+                                </div>
+                                <p class="description">Elegant bamboo decor items. Supports sustainable farming communities.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="buy-btn">Add to Cart</button>
+                                    <button class="btn btn-outline-secondary btn-sm wishlist-btn">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 6 -->
+                    <div class="col-md-4 col-lg-3 mb-4" data-category="handmade">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://i.pinimg.com/736x/6a/85/0d/6a850d3ed0feb3d8deee936760e0a25e.jpg" alt="Handmade Bag">
+                            </div>
+                            <div class="product-info">
+                                <h3>Handwoven Bag</h3>
+                                <p class="price">₹649</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="rating-count">(21)</span>
+                                </div>
+                                <p class="description">Durable handwoven bag made from natural fibers. Supports tribal artisans.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="buy-btn">Add to Cart</button>
+                                    <button class="btn btn-outline-secondary btn-sm wishlist-btn">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 7 -->
+                    <div class="col-md-4 col-lg-3 mb-4" data-category="art">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://i.pinimg.com/736x/21/ed/d7/21edd7f0dbe95926305d9f091bd75103.jpg" alt="Pottery">
+                            </div>
+                            <div class="product-info">
+                                <h3>Handmade Pottery</h3>
+                                <p class="price">₹899</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-count">(47)</span>
+                                </div>
+                                <p class="description">Unique pottery items crafted using traditional techniques. Preserves ancient crafts.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="buy-btn">Add to Cart</button>
+                                    <button class="btn btn-outline-secondary btn-sm wishlist-btn">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 8 -->
+                    <div class="col-md-4 col-lg-3 mb-4" data-category="clothing">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://i.pinimg.com/736x/bb/09/ff/bb09ff27c635d986835df8b19f29670b.jpg" alt="Organic Scarf">
+                                <div class="product-badge">Limited Stock</div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Organic Cotton Scarf</h3>
+                                <p class="price">₹599</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="rating-count">(38)</span>
+                                </div>
+                                <p class="description">Soft and sustainable scarf made from organic cotton. Supports organic farmers.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="buy-btn">Add to Cart</button>
+                                    <button class="btn btn-outline-secondary btn-sm wishlist-btn">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <!-- Impact Counter -->
+                <div class="container mt-4">
+                    <div class="impact-counter">
+                        <h3>1,245</h3>
+                        <p>Lives impacted through your purchases</p>
+                    </div>
+                </div>
+        
+                <!-- NGO Info Section -->
+                <div class="container">
+                    <div class="ngo-info">
+                        <h2>How Your Purchase Helps</h2>
+                        <p>Every purchase you make directly supports our mission to create positive change in communities. Your contribution helps us provide essential resources and support to those in need.</p>
+                        
+                        <div class="impact-grid">
+                            <div class="impact-item">
+                                <i class="fas fa-heart"></i>
+                                <h4>Support Local Artisans</h4>
+                                <p>Your purchase helps sustain local craftspeople and their traditional skills</p>
+                            </div>
+                            <div class="impact-item">
+                                <i class="fas fa-hand-holding-usd"></i>
+                                <h4>Community Development</h4>
+                                <p>Funds are used to improve community infrastructure and services</p>
+                            </div>
+                            <div class="impact-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <h4>Education Support</h4>
+                                <p>Helps provide educational resources and opportunities to children</p>
+                            </div>
+                            <div class="impact-item">
+                                <i class="fas fa-seedling"></i>
+                                <h4>Sustainable Growth</h4>
+                                <p>Promotes sustainable practices and long-term community development</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        <!-- Testimonials Section -->
+        <div class="testimonials">
+            <div class="container">
+                <h2 class="text-center mb-4">What Our Supporters Say</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"I love knowing that my purchases make a real difference. The quality of products is exceptional!"</p>
+                            <p class="testimonial-author">- Priya Sharma, Delhi</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"The handmade jewelry is stunning and the story behind each piece makes it even more special."</p>
+                            <p class="testimonial-author">- Rahul Mehta, Mumbai</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"Great initiative! I've bought multiple gifts from here and everyone loves them."</p>
+                            <p class="testimonial-author">- Ananya Patel, Bangalore</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter Section -->
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h3>Stay Updated</h3>
+                    <p>Subscribe to our newsletter for new product launches, special offers, and impact stories.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Your email address">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="https://res.cloudinary.com/dftao6jzx/image/upload/v1737279644/hopebox_bobsfi.png" class="logo mb-3" style="height: 40px;" />
+                        <p>Empowering communities through ethical commerce.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>Shop</h5>
+                        <div class="footer-links">
+                            <a href="#">All Products</a>
+                            <a href="#">New Arrivals</a>
+                            <a href="#">Best Sellers</a>
+                            <a href="#">Gift Cards</a>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>About</h5>
+                        <div class="footer-links">
+                            <a href="#">Our Story</a>
+                            <a href="#">Impact</a>
+                            <a href="#">Artisans</a>
+                            <a href="#">Blog</a>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>Help</h5>
+                        <div class="footer-links">
+                            <a href="#">FAQs</a>
+                            <a href="#">Shipping</a>
+                            <a href="#">Returns</a>
+                            <a href="#">Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>Legal</h5>
+                        <div class="footer-links">
+                            <a href="#">Terms</a>
+                            <a href="#">Privacy</a>
+                            <a href="#">Cookies</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mt-4 mb-4" style="border-color: rgba(255,255,255,0.1);">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; 2023 HopeBox. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>Made with ❤️ in India</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Cart Modal -->
+        <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="cart-items">
+                            <!-- Empty Cart State -->
+                            <div class="empty-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                <p>Your cart is empty</p>
+                                <a href="#" class="continue-shopping">Continue Shopping</a>
+                            </div>
+                        </div>
+                        <div class="cart-total">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5>Shipping</h5>
+                                <span>Free</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5>Total</h5>
+                                <span id="cart-total-amount" class="h4">₹0</span>
+                            </div>
+                            <button class="checkout-btn" id="proceedToCheckout">
+                                <i class="fas fa-lock me-2"></i>Proceed to Checkout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="auth-form">
+                            <div class="mb-3">
+                                <label for="loginEmail" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="loginEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="loginPassword" required>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                            <div class="text-center mt-3">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot Password?</a>
+                            </div>
+                            <div class="text-center mt-3">
+                                Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Modal -->
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="auth-form">
+                            <div class="mb-3">
+                                <label for="registerName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="registerName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerEmail" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="registerEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="registerPassword" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Register</button>
+                            <div class="text-center mt-3">
+                                Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forgot Password Modal -->
+        <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="forgotPasswordModalLabel">Forgot Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="auth-form">
+                            <div class="mb-3">
+                                <label for="forgotEmail" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="forgotEmail" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Reset Password</button>
+                            <div class="text-center mt-3">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Back to Login</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wishlist Modal -->
+        <div class="modal fade" id="wishlistModal" tabindex="-1" aria-labelledby="wishlistModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="wishlistModalLabel">My Wishlist</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="wishlist-items" class="wishlist-items">
+                            <!-- Wishlist items will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Methods Modal -->
+        <div class="modal fade" id="paymentMethodsModal" tabindex="-1" aria-labelledby="paymentMethodsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="paymentMethodsModalLabel">Select Payment Method</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="payment-methods">
+                            <div class="payment-options">
+                                <!-- UPI Payment -->
+                                <div class="payment-option">
+                                    <input type="radio" name="paymentMethod" id="upiPayment" value="upi">
+                                    <label for="upiPayment">
+                                        <i class="fas fa-mobile-alt"></i> UPI
+                                    </label>
+                                    <div class="upi-details mt-3" id="upiDetails" style="display: none;">
+                                        <div class="qr-container text-center">
+                                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=hopebox@upi&pn=HopeBox&am=0&cu=INR" alt="UPI QR Code" class="img-fluid">
+                                            <p class="mt-2">Scan this QR code with any UPI app to pay</p>
+                                            <p class="upi-id">UPI ID: hopebox@upi</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card Payment -->
+                                <div class="payment-option">
+                                    <input type="radio" name="paymentMethod" id="cardPayment" value="card">
+                                    <label for="cardPayment">
+                                        <i class="fas fa-credit-card"></i> Card Payment
+                                    </label>
+                                    <div class="card-details mt-3" id="cardDetails" style="display: none;">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label class="form-label">Card Number</label>
+                                                <input type="text" class="form-control" placeholder="1234 5678 9012 3456">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="form-label">Expiry Date</label>
+                                                    <input type="text" class="form-control" placeholder="MM/YY">
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="form-label">CVV</label>
+                                                    <input type="text" class="form-control" placeholder="123">
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Pay Now</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!-- Net Banking -->
+                                <div class="payment-option">
+                                    <input type="radio" name="paymentMethod" id="netBanking" value="netbanking">
+                                    <label for="netBanking">
+                                        <i class="fas fa-university"></i> Net Banking
+                                    </label>
+                                    <div class="netbanking-details mt-3" id="netbankingDetails" style="display: none;">
+                                        <select class="form-select mb-3">
+                                            <option value="">Select Bank</option>
+                                            <option value="sbi">State Bank of India</option>
+                                            <option value="hdfc">HDFC Bank</option>
+                                            <option value="icici">ICICI Bank</option>
+                                            <option value="axis">Axis Bank</option>
+                                        </select>
+                                        <button class="btn btn-primary">Proceed to Bank</button>
+                                    </div>
+                                </div>
+
+                                <!-- Cash on Delivery -->
+                                <div class="payment-option">
+                                    <input type="radio" name="paymentMethod" id="cod" value="cod">
+                                    <label for="cod">
+                                        <i class="fas fa-money-bill-wave"></i> Cash on Delivery
+                                    </label>
+                                    <div class="cod-details mt-3" id="codDetails" style="display: none;">
+                                        <p>Pay with cash when your order arrives</p>
+                                        <button class="btn btn-primary">Place Order</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="ngo-bazaar.js"></script>
+    <script src="payment.js"></script>
+</body>
+</html>

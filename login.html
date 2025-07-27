@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Login - Hopebox</title>
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .login-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .login-header img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        .form-control {
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+        }
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13,110,253,.25);
+        }
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        .login-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .login-footer a {
+            color: #0d6efd;
+            text-decoration: none;
+        }
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+        .social-login {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .social-login p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .social-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            background: white;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        .social-button:hover {
+            background: #f8f9fa;
+            color: #0d6efd;
+        }
+        .alert {
+            display: none;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="https://res.cloudinary.com/dftao6jzx/image/upload/v1737279644/hopebox_bobsfi.png" alt="Hopebox Logo">
+                <h2>Welcome Back</h2>
+                <p class="text-muted">Please login to your account</p>
+            </div>
+            
+            <div id="loginError" class="alert alert-danger"></div>
+            <div id="loginSuccess" class="alert alert-success"></div>
+
+            <!-- Login Form -->
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="loginEmail" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="loginPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-login">Login</button>
+            </form>
+
+            <!-- Sign Up Form -->
+            <form id="signupForm" style="display: none;" onsubmit="handleSignup(event)">
+                <div class="mb-3">
+                    <label for="signupUsername" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="signupUsername" placeholder="Choose a username" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="signupEmail" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="signupEmail" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="signupPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="signupPassword" placeholder="Choose a password" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-login">Sign Up</button>
+            </form>
+
+            <div class="social-login">
+                <p>Or login with</p>
+                <div class="social-buttons">
+                    <a href="#" class="social-button">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-button">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-button">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="login-footer">
+                <p id="toggleText">Don't have an account? <a href="#" onclick="toggleForms(event)">Sign up</a></p>
+                <p><a href="#">Forgot your password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showError(message) {
+            const errorDiv = document.getElementById('loginError');
+            const successDiv = document.getElementById('loginSuccess');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            successDiv.style.display = 'none';
+        }
+
+        function showSuccess(message) {
+            const errorDiv = document.getElementById('loginError');
+            const successDiv = document.getElementById('loginSuccess');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            errorDiv.style.display = 'none';
+        }
+
+        function toggleForms(event) {
+            event.preventDefault();
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const toggleText = document.getElementById('toggleText');
+            const header = document.querySelector('.login-header h2');
+            const subheader = document.querySelector('.login-header p');
+
+            if (loginForm.style.display !== 'none') {
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+                toggleText.innerHTML = 'Already have an account? <a href="#" onclick="toggleForms(event)">Login</a>';
+                header.textContent = 'Create Account';
+                subheader.textContent = 'Please fill in your details';
+            } else {
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+                toggleText.innerHTML = 'Don\'t have an account? <a href="#" onclick="toggleForms(event)">Sign up</a>';
+                header.textContent = 'Welcome Back';
+                subheader.textContent = 'Please login to your account';
+            }
+        }
+
+        // Add event listener for form submission
+        document.getElementById('loginForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            console.log('Login form submitted');
+            
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: document.getElementById('loginEmail').value,
+                        password: document.getElementById('loginPassword').value
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error || 'Login failed');
+                }
+
+                console.log('Login response:', data);
+                showSuccess('Login successful! Redirecting...');
+                
+                // Wait for session to be ready by checking auth status
+                const checkAuth = async () => {
+                    try {
+                        console.log('Checking auth status...');
+                        const authResponse = await fetch('/api/auth/status');
+                        const authData = await authResponse.json();
+                        console.log('Auth status:', authData);
+                        
+                        if (authData.authenticated) {
+                            console.log('User is authenticated, redirecting to profile...');
+                            window.location.href = '/profile.html';
+                        } else {
+                            console.log('Not authenticated yet, retrying...');
+                            // Try again in 100ms
+                            setTimeout(checkAuth, 100);
+                        }
+                    } catch (error) {
+                        console.error('Auth check error:', error);
+                        // Try again in 100ms
+                        setTimeout(checkAuth, 100);
+                    }
+                };
+                
+                // Start checking auth status after a short delay
+                console.log('Starting auth check in 500ms...');
+                setTimeout(checkAuth, 500);
+            } catch (error) {
+                console.error('Login error:', error);
+                showError(error.message);
+            }
+        });
+
+        async function handleSignup(event) {
+            event.preventDefault();
+            
+            try {
+                const response = await fetch('/api/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username: document.getElementById('signupUsername').value,
+                        email: document.getElementById('signupEmail').value,
+                        password: document.getElementById('signupPassword').value
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error || 'Signup failed');
+                }
+
+                showSuccess('Account created successfully! Please login.');
+                setTimeout(() => {
+                    toggleForms({ preventDefault: () => {} });
+                }, 1000);
+            } catch (error) {
+                showError(error.message);
+            }
+        }
+    </script>
+</body>
+</html>

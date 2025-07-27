@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+body {
+    background: linear-gradient(45deg,white, #cae5fa, #71b6e4,#529bcc, #094b77,#02121f,black);
+    background-size: 400% 400%;
+    animation: color 4s ease-in-out infinite;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+@keyframes color {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #073d69 !important;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    height: 40px;
+    width: 80px;
+}
+
+.brand-name {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+}
+
+.nav-link {
+    color: white !important;
+    font-weight: 200;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #cae5fa !important;
+    transform: translateY(-2px);
+}
+
+/* Donate Container Styles */
+.donate-container {
+    padding: 4rem 0;
+    color: #073d69;
+}
+
+.donate-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.donate-header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.donate-header .lead {
+    font-size: 1.25rem;
+    color: #cae5fa;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Campaign Card Styles */
+.campaign-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.campaign-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.campaign-card.selected {
+    border: 2px solid #073d69;
+}
+
+.campaign-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #073d69;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.campaign-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.campaign-content {
+    padding: 1.5rem;
+}
+
+.campaign-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #073d69;
+    margin-bottom: 0.75rem;
+}
+
+.campaign-description {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.campaign-progress-container {
+    margin-top: 1rem;
+}
+
+.campaign-progress {
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.campaign-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #073d69, #71b6e4);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.campaign-stats {
+    display: flex;
+    justify-content: space-between;
+    color: #073d69;
+    font-size: 0.875rem;
+}
+
+/* Donation Form Styles */
+.donation-form {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.form-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form-header h3 {
+    color: #073d69;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.donation-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.donation-type-label {
+    font-size: 1.1rem;
+    color: #073d69;
+    font-weight: 600;
+}
+
+.amount-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.amount-option {
+    padding: 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.amount-option:hover {
+    border-color: #073d69;
+    transform: translateY(-2px);
+}
+
+.amount-option.selected {
+    background: #073d69;
+    color: white;
+    border-color: #073d69;
+}
+
+.amount-option span {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.amount-option small {
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+.monthly-amount, .custom-amount {
+    margin-bottom: 2rem;
+}
+
+.form-label {
+    color: #073d69;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.input-group {
+    margin-bottom: 0.5rem;
+}
+
+.input-group-text {
+    background: #073d69;
+    color: white;
+    border: none;
+}
+
+.form-control {
+    border: 2px solid #e9ecef;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #073d69;
+    box-shadow: none;
+}
+
+.monthly-info {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.payment-method {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.payment-method:hover {
+    border-color: #073d69;
+    transform: translateY(-2px);
+}
+
+.payment-method.selected {
+    background: #073d69;
+    color: white;
+    border-color: #073d69;
+}
+
+.payment-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.payment-label {
+    font-weight: 600;
+}
+
+.btn-donate {
+    width: 100%;
+    padding: 1rem;
+    background: #073d69;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-donate:hover {
+    background: #094b77;
+    transform: translateY(-2px);
+}
+
+.security-badge {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    color: #666;
+    font-size: 0.875rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .donate-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .donate-header .lead {
+        font-size: 1rem;
+    }
+    
+    .campaign-image {
+        height: 200px;
+    }
+    
+    .amount-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .payment-methods {
+        flex-direction: column;
+    }
+}

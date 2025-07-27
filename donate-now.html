@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="donate-now.css" />
+    <title>Donate Now - Hopebox</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="https://res.cloudinary.com/dftao6jzx/image/upload/v1737279644/hopebox_bobsfi.png" class="logo" alt="Hopebox Logo" />
+                <span class="brand-name">Hopebox</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html"><i class="fas fa-user me-1"></i> Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html"><i class="fas fa-sign-out-alt me-1"></i> Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="donate-container">
+        <div class="container">
+            <div class="donate-header">
+                <h1>Make a Difference Today</h1>
+                <p class="lead">Your donation can help create positive change in the lives of those in need. Choose a campaign and make your contribution.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="campaign-card selected">
+                        <div class="campaign-badge">Featured</div>
+                        <img style="height:500px; width:100%;" src="https://wildlifesos.org/wp-content/uploads/2020/12/Awareness-Session-COVID-19-Deoria-students-15.jpg" alt="Education Campaign" class="campaign-image">
+                        <div class="campaign-content">
+                            <h3 class="campaign-title">Education for Underprivileged Children</h3>
+                            <p class="campaign-description">Help provide quality education, books, and school supplies to children from low-income families.</p>
+                            <div class="campaign-progress-container">
+                                <div class="campaign-progress">
+                                    <div class="campaign-progress-bar" style="width: 75%"></div>
+                                </div>
+                                <div class="campaign-stats">
+                                    <span><i class="fas fa-rupee-sign me-1"></i>75,000 raised</span>
+                                    <span><i class="fas fa-bullseye me-1"></i>75% of goal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="campaign-card">
+                        <img style="height:500px; width:100%;"src="https://thelivenagpur.com/wp-content/uploads/2020/04/20200412_143234.jpg" alt="Food Campaign" class="campaign-image">
+                        <div class="campaign-content">
+                            <h3 class="campaign-title">Food for Hungry Families</h3>
+                            <p class="campaign-description">Provide nutritious meals to families struggling with food insecurity.</p>
+                            <div class="campaign-progress-container">
+                                <div class="campaign-progress">
+                                    <div class="campaign-progress-bar" style="width: 45%"></div>
+                                </div>
+                                <div class="campaign-stats">
+                                    <span><i class="fas fa-rupee-sign me-1"></i>45,000 raised</span>
+                                    <span><i class="fas fa-bullseye me-1"></i>45% of goal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="donation-form">
+                        <div class="form-header">
+                            <h3><i class="fas fa-heart me-2"></i> Your Donation</h3>
+                        </div>
+                        
+                        <div class="donation-type">
+                            <div class="donation-type-label">
+                                <i class="fas fa-gift me-2"></i>One-time Donation
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="monthlyToggle">
+                                <label class="form-check-label" for="monthlyToggle">Monthly</label>
+                            </div>
+                        </div>
+
+                        <div class="amount-options">
+                            <div class="amount-option selected">
+                                <span>₹500</span>
+                                <small>Helps 1 child</small>
+                            </div>
+                            <div class="amount-option">
+                                <span>₹1,000</span>
+                                <small>Helps 2 children</small>
+                            </div>
+                            <div class="amount-option">
+                                <span>₹2,000</span>
+                                <small>Supports a family</small>
+                            </div>
+                            <div class="amount-option">
+                                <span>₹5,000</span>
+                                <small>Major impact</small>
+                            </div>
+                        </div>
+
+                        <div class="monthly-amount">
+                            <label class="form-label"><i class="fas fa-calendar-alt me-2"></i>Monthly Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="number" class="form-control" placeholder="Enter monthly amount">
+                            </div>
+                            <div class="monthly-info">
+                                <i class="fas fa-info-circle"></i>
+                                Your card will be charged this amount every month until you cancel
+                            </div>
+                        </div>
+
+                        <div class="custom-amount">
+                            <label class="form-label"><i class="fas fa-edit me-2"></i>Custom Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="number" class="form-control" placeholder="Enter amount">
+                            </div>
+                        </div>
+
+                        <div class="payment-methods">
+                            <div class="payment-method selected" data-method="card">
+                                <div class="payment-icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <div class="payment-label">Card</div>
+                            </div>
+                            <div class="payment-method" data-method="upi">
+                                <div class="payment-icon">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <div class="payment-label">UPI</div>
+                            </div>
+                            <div class="payment-method" data-method="wallet">
+                                <div class="payment-icon">
+                                    <i class="fas fa-wallet"></i>
+                                </div>
+                                <div class="payment-label">Wallet</div>
+                            </div>
+                        </div>
+
+                        <!-- Card Payment Form -->
+                        <div class="payment-form" id="cardForm">
+                            <form id="cardPaymentForm">
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="far fa-credit-card me-2"></i>Card Number</label>
+                                    <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label"><i class="far fa-calendar-alt me-2"></i>Expiry Date</label>
+                                        <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label"><i class="fas fa-lock me-2"></i>CVV</label>
+                                        <input type="text" class="form-control" id="cvv" placeholder="123" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fas fa-user me-2"></i>Name on Card</label>
+                                    <input type="text" class="form-control" id="cardName" placeholder="Enter name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fas fa-envelope me-2"></i>Email</label>
+                                    <input type="email" class="form-control" id="cardEmail" placeholder="Enter email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fas fa-phone me-2"></i>Phone</label>
+                                    <input type="tel" class="form-control" id="cardPhone" placeholder="Enter phone" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100"><i class="fas fa-lock me-2"></i>Pay Securely</button>
+                            </form>
+                        </div>
+
+                        <!-- UPI Payment Form -->
+                        <div class="payment-form" id="upiForm" style="display: none;">
+                            <form id="upiPaymentForm">
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fas fa-user me-2"></i>Full Name</label>
+                                    <input type="text" class="form-control" id="upiName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fas fa-envelope me-2"></i>Email</label>
+                                    <input type="email" class="form-control" id="upiEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fas fa-phone me-2"></i>Phone</label>
+                                    <input type="tel" class="form-control" id="upiPhone" required>
+                                </div>
+                                <div class="text-center mb-3">
+                                    <img src="" alt="UPI QR Code" id="upiQRCode" class="img-fluid" style="max-width: 200px;">
+                                    <p class="mt-2">Scan this QR code with any UPI app</p>
+                                    <p class="upi-id">UPI ID: hopebox@upi</p>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100"><i class="fas fa-qrcode me-2"></i>I've Completed the Payment</button>
+                            </form>
+                        </div>
+
+                        <!-- Wallet Payment Form -->
+                        <div class="payment-form" id="walletForm" style="display: none;">
+                            <form id="walletPaymentForm">
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fas fa-user me-2"></i>Full Name</label>
+                                    <input type="text" class="form-control" id="walletName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fas fa-envelope me-2"></i>Email</label>
+                                    <input type="email" class="form-control" id="walletEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fas fa-phone me-2"></i>Phone</label>
+                                    <input type="tel" class="form-control" id="walletPhone" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fas fa-wallet me-2"></i>Select Wallet</label>
+                                    <select class="form-select" id="walletType" required>
+                                        <option value="">Choose a wallet</option>
+                                        <option value="paytm">Paytm</option>
+                                        <option value="phonepe">PhonePe</option>
+                                        <option value="gpay">Google Pay</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100"><i class="fas fa-wallet me-2"></i>Pay with Wallet</button>
+                            </form>
+                        </div>
+                                
+                            </form>
+                        </div>
+
+                        <!-- UPI Payment Form -->
+                        <div class="payment-form" id="upiForm" style="display: none;">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fas fa-qrcode me-2"></i>UPI ID</label>
+                                    <input type="text" class="form-control" placeholder="username@upi">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fas fa-mobile-alt me-2"></i>UPI App</label>
+                                    <select class="form-select">
+                                        <option value="">Select UPI App</option>
+                                        <option value="gpay">Google Pay</option>
+                                        <option value="phonepe">PhonePe</option>
+                                        <option value="paytm">Paytm</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-donate">
+                                    <i class="fas fa-hand-holding-heart me-2"></i>Pay with UPI
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Wallet Payment Form -->
+                        <div class="payment-form" id="walletForm" style="display: none;">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fas fa-wallet me-2"></i>Select Wallet</label>
+                                    <select class="form-select">
+                                        <option value="">Choose your wallet</option>
+                                        <option value="paytm">Paytm Wallet</option>
+                                        <option value="gpay">Google Pay</option>
+                                        <option value="phonepe">PhonePe Wallet</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-donate">
+                                    <i class="fas fa-hand-holding-heart me-2"></i>Pay with Wallet
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="security-badge">
+                            <i class="fas fa-lock"></i>
+                            <span>Secure Payment | 256-bit SSL Encryption | PCI Compliant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let selectedAmount = 500; // Default amount
+
+        // Handle amount selection
+        document.querySelectorAll('.amount-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.amount-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedAmount = parseInt(this.querySelector('span').textContent.replace('₹', ''));
+                document.querySelector('.custom-amount input').value = '';
+            });
+        });
+
+        // Handle custom amount input
+        document.querySelector('.custom-amount input').addEventListener('input', function() {
+            document.querySelectorAll('.amount-option').forEach(opt => opt.classList.remove('selected'));
+            selectedAmount = parseInt(this.value) || 0;
+        });
+
+        // Handle payment method selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                const paymentMethod = this.getAttribute('data-method');
+                document.querySelectorAll('.payment-form').forEach(form => form.style.display = 'none');
+                document.getElementById(paymentMethod + 'Form').style.display = 'block';
+
+                // Update UPI QR code if UPI is selected
+                if (paymentMethod === 'upi') {
+                    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=hopebox@upi&pn=HopeBox&am=${selectedAmount}&cu=INR`;
+                    document.getElementById('upiQRCode').src = qrCodeUrl;
+                }
+            });
+        });
+
+        // Handle form submissions
+        ['card', 'upi', 'wallet'].forEach(method => {
+            document.getElementById(method + 'PaymentForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = {
+                    name: document.getElementById(method + 'Name').value,
+                    email: document.getElementById(method + 'Email').value,
+                    phone: document.getElementById(method + 'Phone').value,
+                    amount: selectedAmount,
+                    paymentMethod: method.toUpperCase(),
+                    transactionId: 'TXN' + Date.now()
+                };
+
+                // Redirect to receipt page with form data
+                const queryString = Object.keys(formData)
+                    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]))
+                    .join('&');
+
+                window.location.href = 'donation-receipt-new.html?' + queryString;
+            });
+        });
+    
+        // Campaign selection
+        document.querySelectorAll('.campaign-card').forEach(card => {
+            card.addEventListener('click', () => {
+                document.querySelectorAll('.campaign-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+            });
+        });
+
+        // Amount selection
+        document.querySelectorAll('.amount-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.amount-option').forEach(o => o.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
+
+        // Payment method selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', () => {
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                method.classList.add('selected');
+
+                // Hide all payment forms
+                document.querySelectorAll('.payment-form').forEach(form => {
+                    form.style.display = 'none';
+                });
+
+                // Show selected payment form
+                const selectedMethod = method.getAttribute('data-method');
+                document.getElementById(`${selectedMethod}Form`).style.display = 'block';
+            });
+        });
+
+        // Monthly donation toggle
+        const monthlyToggle = document.getElementById('monthlyToggle');
+        const monthlyAmount = document.querySelector('.monthly-amount');
+        const amountOptions = document.querySelector('.amount-options');
+        const customAmount = document.querySelector('.custom-amount');
+
+        // Set initial state
+        monthlyAmount.style.display = 'none';
+        amountOptions.style.display = 'grid';
+        customAmount.style.display = 'block';
+
+        monthlyToggle.addEventListener('change', () => {
+            if (monthlyToggle.checked) {
+                monthlyAmount.style.display = 'block';
+                amountOptions.style.display = 'none';
+                customAmount.style.display = 'none';
+            } else {
+                monthlyAmount.style.display = 'none';
+                amountOptions.style.display = 'grid';
+                customAmount.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

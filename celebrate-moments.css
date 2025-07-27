@@ -1,0 +1,156 @@
+.celebrate-moments-section-container{
+    background: linear-gradient(to top,#030325,#0f0f21,#114789, #0f0f21,#030325);
+}
+.top-section-container {
+    background-image: url("https://res.cloudinary.com/dftao6jzx/image/upload/v1739136573/Seasonal_pr3cqu.png");
+    width: 100vw;
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.top-section-text-container{
+    padding:20px;
+}
+.top-section-title{
+    color:white;
+    text-align:center;
+    font-family: 'Playfair Display', serif;
+    color:#c4d7ea;
+    font-size:40px;
+}
+.top-section-subtitle{
+    color:white;
+    text-align:center;
+    font-family: 'Playfair Display', serif;
+    color:#c4d7ea;
+    font-size:26px;
+}
+.logo-container{
+    background-color: #12161b;
+    height:40px;
+}
+.wave-svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    border:none;
+}
+.logo {
+    height: 45px;
+    width: 80px;
+}
+
+.animation-container{
+    overflow-x: hidden;
+    height: auto;
+    padding: 30px;
+}
+.card-container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    flex-wrap: wrap; /* Ensures responsiveness */
+    width: 80%;
+    gap: 60px;
+    margin: 0 auto; /* Centers the container itself */
+    margin-bottom: 100px;
+    opacity: 0; 
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.image1 {
+    position: relative;
+    left: -100%;
+    transition: left 1s ease-out;
+    width:500px;
+    height:450px;
+}
+.image2 {
+    position: relative;
+    right: -100%;
+    transition: right 1s ease-out;
+    width:500px;
+    height:450px;
+
+}
+
+
+
+.text-container1{
+    /* border: 1px solid #ddd; */
+    border-radius: 10px;
+    padding: 20px;
+    background-color:white;
+    width:500px;
+    height:450px;
+    text-align: center;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(20px);
+    transform: translateX(100%);
+    transition: transform 1s ease-out;
+    font-size: 24px;
+
+}
+.text-container2{
+    /* border: 1px solid #ddd; */
+    border-radius: 10px;
+    padding: 20px;
+    background-color:white;
+    width:500px;
+    height:450px;
+    text-align: center;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(20px);
+    transform: translateX(-100%);
+    transition: transform 1s ease-out;
+    font-size: 24px;
+}
+.head1 {
+    position: relative;
+    right: -100%;
+    font-size: 30px;
+    font-weight: bold;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    transition: right 1s ease-out;
+    color:white;
+}
+.head2 {
+    position: relative;
+    left: -100%;
+    font-size: 30px;
+    font-weight: bold;
+    transition: left 1s ease-out;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:white;
+}
+
+/* When section is in view, animate */
+.show .image1 {
+    left: 0;
+}
+.show .image2 {
+    right: 0;
+}
+.show .head1 {
+    right: 0;
+}
+.show .head2 {
+    left: 0;
+}
+.show .text-container1 {
+    transform: translateX(0);
+}
+.show .text-container2 {
+    transform: translateX(0);
+}
+.animation-card-description{
+    color:white;
+}
