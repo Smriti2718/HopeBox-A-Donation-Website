@@ -115,9 +115,16 @@ app.post('/api/signup', async (req, res) => {
 app.post('/api/login', async (req, res) => {
     try {
         const { email, password } = req.body;
-        
+
+        if (!email || !password) {
+            return res.status(400).json({ error: 'Email and password are required' });
+        }
+        if (typeof email !== 'string' || typeof password !== 'string') {
+            return res.status(400).json({ error: 'Invalid input format' });
+        }
+
         // Find user by email
-        const user = await usersCollection.findOne({ email });
+        const user = await usersCollection.findOne({ email: email.trim().toLowerCase() });
         
         if (!user) {
             return res.status(401).json({ error: 'Invalid credentials' });
