@@ -50,7 +50,7 @@ app.use(cookieParser());
 
 // Session configuration
 app.use(session({
-    secret: 'your-secret-key', // You can change this to a more secure key
+    secret: process.env.SESSION_SECRET, 
     resave: true,
     saveUninitialized: true,
     rolling: true,
