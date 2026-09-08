@@ -61,13 +61,6 @@ app.use(session({
     }
 }));
 
-// Debug middleware to log session
-app.use((req, res, next) => {
-    console.log('Session debug - URL:', req.url);
-    console.log('Session debug - Session:', req.session);
-    next();
-});
-
 // Routes
 app.post('/api/signup', async (req, res) => {
     try {
@@ -105,36 +98,29 @@ app.post('/api/signup', async (req, res) => {
 app.post('/api/login', async (req, res) => {
     try {
         const { email, password } = req.body;
-        console.log('Login attempt for email:', email);
         
         // Find user by email
         const user = await usersCollection.findOne({ email });
-        console.log('User found:', user ? 'Yes' : 'No');
         
         if (!user) {
-            console.log('Login failed: User not found');
             return res.status(401).json({ error: 'Invalid credentials' });
         }
         
         // Verify password
         const validPassword = await bcrypt.compare(password, user.password);
-        console.log('Password valid:', validPassword ? 'Yes' : 'No');
         
         if (!validPassword) {
-            console.log('Login failed: Invalid password');
             return res.status(401).json({ error: 'Invalid credentials' });
         }
         
         // Set session and save it
         req.session.userId = user._id.toString();
-        console.log('Setting session for user ID:', req.session.userId);
         
         req.session.save((err) => {
             if (err) {
                 console.error('Session save error:', err);
                 return res.status(500).json({ error: 'Failed to create session' });
             }
-            console.log('Session saved successfully');
             res.json({ message: 'Logged in successfully', userId: user._id.toString() });
         });
     } catch (error) {
@@ -145,21 +131,14 @@ app.post('/api/login', async (req, res) => {
 
 app.get('/api/profile', async (req, res) => {
     try {
-        console.log('Profile request, session:', req.session);
-        
         if (!req.session.userId) {
-            console.log('Profile request rejected: No session ID');
             return res.status(401).json({ error: 'Not authenticated' });
         }
         
-        console.log('Looking up user with ID:', req.session.userId);
-        
         // Find user by ID
         const user = await usersCollection.findOne({ _id: new ObjectId(req.session.userId) });
-        console.log('User found:', user ? 'Yes' : 'No');
         
         if (!user) {
-            console.log('Profile request rejected: User not found in database');
             // Clear invalid session
             req.session.destroy();
             return res.status(404).json({ error: 'User not found' });
@@ -167,7 +146,6 @@ app.get('/api/profile', async (req, res) => {
 
         // Don't send password in response
         const { password, ...userWithoutPassword } = user;
-        console.log('Sending profile data for user:', userWithoutPassword.username);
         res.json(userWithoutPassword);
     } catch (error) {
         console.error('Profile error:', error);
