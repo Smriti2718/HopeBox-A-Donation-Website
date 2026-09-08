@@ -193,40 +193,6 @@ app.post('/api/logout', (req, res) => {
     });
 });
 
-// Donation endpoints
-app.post('/api/donate', async (req, res) => {
-    try {
-        const { fullName, email, amount, message } = req.body;
-        
-        // Create the donation document
-        const donation = {
-            fullName,
-            email,
-            amount: parseFloat(amount),
-            message: message || '',
-            date: new Date()
-        };
-
-        // Insert the donation
-        const result = await donationsCollection.insertOne(donation);
-        console.log('Donation saved with ID:', result.insertedId);
-
-        // Get all donations after saving
-        const donations = await donationsCollection.find()
-            .sort({ date: -1 })
-            .toArray();
-        
-        console.log('Found', donations.length, 'donations');
-        
-        res.status(201).json({ 
-            message: 'Donation recorded successfully',
-            donations: donations
-        });
-    } catch (error) {
-        console.error('Error saving donation:', error);
-        res.status(500).json({ error: error.message });
-    }
-});
 
 // Handle item donations
 app.post('/api/donate-item', async (req, res) => {
@@ -323,16 +289,6 @@ app.get('/api/generate-receipt', async (req, res) => {
     }
 });
 
-// Get all donations
-app.get('/api/donations', async (req, res) => {
-    try {
-        const donations = await donationsCollection.find().sort({ date: -1 }).toArray();
-        res.json(donations);
-    } catch (error) {
-        console.error('Error fetching donations:', error);
-        res.status(500).json({ error: error.message });
-    }
-});
 
 app.get('/profile', (req, res) => {
     if (!req.session.userId) {
