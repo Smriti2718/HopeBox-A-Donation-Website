@@ -66,13 +66,30 @@ app.post('/api/signup', async (req, res) => {
     try {
         const { username, email, password } = req.body;
 
+        // Validate input
+        if (!username || !email || !password) {
+            return res.status(400).json({ error: 'All fields are required' });
+        }
+        if (typeof username !== 'string' || typeof email !== 'string' || typeof password !== 'string') {
+            return res.status(400).json({ error: 'Invalid input format' });
+        }
+        if (username.trim().length < 3) {
+            return res.status(400).json({ error: 'Username must be at least 3 characters' });
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            return res.status(400).json({ error: 'Invalid email format' });
+        }
+        if (password.length < 8) {
+            return res.status(400).json({ error: 'Password must be at least 8 characters' });
+        }
+
         // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
         
         // Create new user document
         const newUser = {
-            username,
-            email,
+            username: username.trim(),
+            email: email.trim().toLowerCase(),
             password: hashedPassword,
             createdAt: new Date()
         };
