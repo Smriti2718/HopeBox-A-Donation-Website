@@ -199,17 +199,40 @@ app.post('/api/logout', (req, res) => {
 // Handle item donations
 app.post('/api/donate-item', async (req, res) => {
     try {
+        const { name, contact, email, location, category, description, quantity } = req.body;
+
+        // Validate required fields
+        if (!name || !email || !category || !quantity) {
+            return res.status(400).json({ error: 'Name, email, category and quantity are required' });
+        }
+        if (typeof name !== 'string' || typeof email !== 'string' || typeof category !== 'string') {
+            return res.status(400).json({ error: 'Invalid input format' });
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            return res.status(400).json({ error: 'Invalid email format' });
+        }
+
+        const qty = parseInt(quantity, 10);
+        if (isNaN(qty) || qty <= 0 || qty > 10000) {
+            return res.status(400).json({ error: 'Quantity must be between 1 and 10000' });
+        }
+
         const donationId = uuidv4();
         const donation = {
             donationId,
-            ...req.body,
+            name: name.trim(),
+            contact: contact ? String(contact).trim() : '',
+            email: email.trim().toLowerCase(),
+            location: location ? String(location).trim() : '',
+            category: category.trim(),
+            description: description ? String(description).trim() : '',
+            quantity: qty,
             date: new Date(),
             status: 'pending',
             type: 'item'
         };
         
         const result = await donationsCollection.insertOne(donation);
-        console.log('Item donation saved:', result);
         res.status(201).json({ message: 'Item donation recorded successfully', donationId });
     } catch (error) {
         console.error('Item donation error:', error);
